@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Números</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD1BA, #FFB199);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Botón */
+        button {
+            background-color: #FF856C;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF6942;
+        }
+
+        /* Estilo del resultado */
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Estilo del input */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Análisis de Números</h1>
+        <label for="numberInput">Ingrese los números (separados por comas):</label>
+        <input type="text" id="numberInput" placeholder="Ejemplo: 1, 2, 45, -4, -1">
+        <button onclick="analizarNumeros()">Realizar Análisis</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function analizarNumeros() {
+            const input = document.getElementById('numberInput').value;
+            const numeros = input.split(',').map(num => parseFloat(num.trim()));
+            let nn = 0;  // Contador de negativos
+            let np = 0;  // Contador de positivos
+            let m15 = 0; // Contador de múltiplos de 15
+            let total = 0; // Suma de pares
+
+            for (let i = 0; i < numeros.length; i++) {
+                if (numeros[i] < 0) { nn += 1; }
+                if (numeros[i] > 0) { np += 1; }
+                if (numeros[i] % 15 === 0) { m15 += 1; }
+                if (numeros[i] % 2 === 0) { total += numeros[i]; }
+            }
+
+            const resultado = `
+                Valores negativos: ${nn}<br>
+                Valores positivos: ${np}<br>
+                Valores múltiplos de 15: ${m15}<br>
+                Valor acumulado de los números pares: ${total}
+            `;
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorph Web</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD1BA, #FFB199);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            height: 80%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Dropdown con details */
+        details {
+            margin: 10px 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #FF856C;
+        }
+
+        details[open] summary {
+            color: #FF6942;
+        }
+
+        /* Estilo del contenido dentro del dropdown */
+        details p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        /* Botón */
+        button {
+            background-color: #FF856C;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #FF6942;
+        }
+    </style>
+</head>
+<body>
+    <section class="glass-card">
+        <h1>Glassmorph Dropdowns</h1>
+        <details>
+            <summary>Opción 1</summary>
+            <p>Este es el contenido de la primera opción.</p>
+        </details>
+        <details>
+            <summary>Opción 2</summary>
+            <p>Este es el contenido de la segunda opción.</p>
+        </details>
+        <details>
+            <summary>Opción 3</summary>
+            <p>Este es el contenido de la tercera opción.</p>
+        </details>
+        <button>Acción</button>
+    </section>
+</body>
+</html>

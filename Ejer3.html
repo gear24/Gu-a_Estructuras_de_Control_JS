@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Aumento Salarial</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD1BA, #FFB199);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Botón */
+        button {
+            background-color: #FF856C;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF6942;
+        }
+
+        /* Estilo del resultado */
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Estilo del input */
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Calculadora de Aumento Salarial</h1>
+        <label for="nombre">Nombre del trabajador:</label>
+        <input type="text" id="nombre" placeholder="Ejemplo: Elmo Mazo">
+        <label for="salario">Salario:</label>
+        <input type="number" id="salario" placeholder="Ejemplo: 200">
+        <label for="categoria">Categoría:</label>
+        <select id="categoria">
+            <option value="">--Seleccione--</option>
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+            <option value="d">D</option>
+        </select>
+        <button onclick="calcularAumento()">Calcular Aumento</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularAumento() {
+            const nombre = document.getElementById('nombre').value;
+            const salario = parseFloat(document.getElementById('salario').value);
+            const categoria = document.getElementById('categoria').value;
+            let aumento = 0;
+            let porcentaje = 0;
+
+            switch (categoria) {
+                case 'a':
+                    porcentaje = 0.15;
+                    aumento = salario * (1 + porcentaje);
+                    break;
+                case 'b':
+                    porcentaje = 0.30;
+                    aumento = salario * (1 + porcentaje);
+                    break;
+                case 'c':
+                    porcentaje = 0.10;
+                    aumento = salario * (1 + porcentaje);
+                    break;
+                case 'd':
+                    porcentaje = 0.20;
+                    aumento = salario * (1 + porcentaje);
+                    break;
+                default:
+                    aumento = salario; // No hay aumento
+            }
+
+            const resultado = aumento > salario 
+                ? `El trabajador ${nombre}, devengó un total de $${salario} 
+                   y se le aplicó un aumento del ${Math.round(porcentaje * 100)}% quedando $${aumento.toFixed(2)}.`
+                : `Lo siento pana, el capitalismo está feo, te quedaste solo con $${salario}.`;
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

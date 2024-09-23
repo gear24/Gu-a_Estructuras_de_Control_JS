@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Multiplicar</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD1BA, #FFB199);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Botón */
+        button {
+            background-color: #FF856C;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF6942;
+        }
+
+        /* Estilo del resultado */
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Tabla de Multiplicar</h1>
+        <label for="tableInput">Ingrese un número:</label>
+        <input type="number" id="tableInput" placeholder="Ejemplo: 2" required>
+        <button onclick="mostrarTabla()">Mostrar Tabla</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function mostrarTabla() {
+            const table = parseInt(document.getElementById('tableInput').value);
+            let resultado = '';
+
+            for (let b = 1; b <= 10; b++) {
+                resultado += `${table} * ${b} = ${table * b}<br>`;
+            }
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

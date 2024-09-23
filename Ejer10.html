@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio de Edades por Turno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #80d8ee, #9fc0f1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgba(122, 185, 255, 0.8);
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            background-color: rgba(52, 152, 219, 0.6);
+        }
+
+        button:hover {
+            background-color: rgba(41, 128, 185, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        p,
+        h3 {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br><br>
+    <h1>Promedio de Edades por Turno</h1>
+
+    <!-- Formulario para ingresar las edades -->
+    <form id="form-edades">
+        <label for="manana">Edades turno mañana (5 estudiantes):</label><br>
+        <input type="number" id="manana1" placeholder="Edad 1" required>
+        <input type="number" id="manana2" placeholder="Edad 2" required>
+        <input type="number" id="manana3" placeholder="Edad 3" required>
+        <input type="number" id="manana4" placeholder="Edad 4" required>
+        <input type="number" id="manana5" placeholder="Edad 5" required><br><br>
+
+        <label for="tarde">Edades turno tarde (6 estudiantes):</label><br>
+        <input type="number" id="tarde1" placeholder="Edad 1" required>
+        <input type="number" id="tarde2" placeholder="Edad 2" required>
+        <input type="number" id="tarde3" placeholder="Edad 3" required>
+        <input type="number" id="tarde4" placeholder="Edad 4" required>
+        <input type="number" id="tarde5" placeholder="Edad 5" required>
+        <input type="number" id="tarde6" placeholder="Edad 6" required><br><br>
+
+        <label for="noche">Edades turno noche (11 estudiantes):</label><br>
+        <input type="number" id="noche1" placeholder="Edad 1" required>
+        <input type="number" id="noche2" placeholder="Edad 2" required>
+        <input type="number" id="noche3" placeholder="Edad 3" required>
+        <input type="number" id="noche4" placeholder="Edad 4" required>
+        <input type="number" id="noche5" placeholder="Edad 5" required>
+        <input type="number" id="noche6" placeholder="Edad 6" required>
+        <input type="number" id="noche7" placeholder="Edad 7" required>
+        <input type="number" id="noche8" placeholder="Edad 8" required>
+        <input type="number" id="noche9" placeholder="Edad 9" required>
+        <input type="number" id="noche10" placeholder="Edad 10" required>
+        <input type="number" id="noche11" placeholder="Edad 11" required><br><br>
+
+        <button type="button" onclick="calcularPromedios()">Calcular Promedios</button>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calcularPromedios() {
+            // Agarramos todoo
+            let edadesManana = [
+                parseInt(document.getElementById("manana1").value),
+                parseInt(document.getElementById("manana2").value),
+                parseInt(document.getElementById("manana3").value),
+                parseInt(document.getElementById("manana4").value),
+                parseInt(document.getElementById("manana5").value)
+            ];
+
+            let edadesTarde = [
+                parseInt(document.getElementById("tarde1").value),
+                parseInt(document.getElementById("tarde2").value),
+                parseInt(document.getElementById("tarde3").value),
+                parseInt(document.getElementById("tarde4").value),
+                parseInt(document.getElementById("tarde5").value),
+                parseInt(document.getElementById("tarde6").value)
+            ];
+
+            let edadesNoche = [
+                parseInt(document.getElementById("noche1").value),
+                parseInt(document.getElementById("noche2").value),
+                parseInt(document.getElementById("noche3").value),
+                parseInt(document.getElementById("noche4").value),
+                parseInt(document.getElementById("noche5").value),
+                parseInt(document.getElementById("noche6").value),
+                parseInt(document.getElementById("noche7").value),
+                parseInt(document.getElementById("noche8").value),
+                parseInt(document.getElementById("noche9").value),
+                parseInt(document.getElementById("noche10").value),
+                parseInt(document.getElementById("noche11").value)
+            ];
+
+            // Hacemos los calculos
+            let promedioManana = calcularPromedio(edadesManana);
+            let promedioTarde = calcularPromedio(edadesTarde);
+            let promedioNoche = calcularPromedio(edadesNoche);
+
+            // Determinar el turno con mayor promedio
+            let mayorPromedio = Math.max(promedioManana, promedioTarde, promedioNoche);
+            let turnoMayorPromedio = '';
+
+            if (mayorPromedio === promedioManana) {
+                turnoMayorPromedio = 'mañana';
+            } else if (mayorPromedio === promedioTarde) {
+                turnoMayorPromedio = 'tarde';
+            } else {
+                turnoMayorPromedio = 'noche';
+            }
+
+            // Mostrar los resultados
+            document.getElementById("result").innerHTML = `
+                <p>Promedio de edades del turno mañana: ${promedioManana}</p>
+                <p>Promedio de edades del turno tarde: ${promedioTarde}</p>
+                <p>Promedio de edades del turno noche: ${promedioNoche}</p>
+                <h3>El turno con mayor promedio de edades es el turno ${turnoMayorPromedio}</h3>
+            `;
+        }
+
+        function calcularPromedio(edades) {
+            let suma = 0;
+
+            // Sumamos todas las edades
+            for (let i = 0; i < edades.length; i++) {
+                suma += edades[i];
+            }
+
+            // Calculamos el promedio
+            let promedio = suma / edades.length;
+
+            return promedio;
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Descuentos en Viajes</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #bae9ff, #99ffaf);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Botón */
+        button {
+            background-color: #4ba156;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #77db85;
+        }
+
+        /* Estilo del resultado */
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Estilo del input */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Calculadora de Descuentos</h1>
+        <label for="originInput">Ciudad de origen:</label>
+        <input type="text" id="originInput" placeholder="Ejemplo: Palma">
+        <label for="destinationInput">Ciudad de destino:</label>
+        <input type="text" id="destinationInput" placeholder="Ejemplo: La costa del Sol">
+        <button onclick="calcularDescuento()">Calcular Descuento</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularDescuento() {
+            const origin = document.getElementById('originInput').value.trim();
+            const destination = document.getElementById('destinationInput').value.trim();
+            let descuento = 0;
+
+            if (origin.toLowerCase() === 'palma') {
+                if (destination.toLowerCase() === 'la costa del sol') {
+                    descuento = 5;
+                } else if (destination.toLowerCase() === 'panchimalco') {
+                    descuento = 10;
+                } else if (destination.toLowerCase() === 'puerto el triunfo') {
+                    descuento = 15;
+                }
+            }
+
+            const resultado = descuento > 0 
+                ? `El descuento es del ${descuento}%`
+                : 'No hay descuento disponible para esta ruta.';
+            
+            document.getElementById('resultado').innerText = resultado;
+        }
+    </script>
+</body>
+</html>

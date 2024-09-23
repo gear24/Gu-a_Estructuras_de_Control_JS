@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Descuentos en Coches</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #FFD1BA, #FFB199);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        /* Estilo de glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Botón */
+        button {
+            background-color: #FF856C;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FF6942;
+        }
+
+        /* Estilo del resultado */
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Estilo del select */
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>Calculadora de Descuentos en Coches</h1>
+        <label for="carSelect">Seleccione un coche:</label>
+        <select id="carSelect">
+            <option value="">--Seleccione--</option>
+            <option value="ford fiesta">FORD FIESTA</option>
+            <option value="ford focus">FORD FOCUS</option>
+            <option value="ford escape">FORD ESCAPE</option>
+        </select>
+        <button onclick="calcularDescuento()">Calcular Descuento</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularDescuento() {
+            const carModel = document.getElementById('carSelect').value;
+            let descuento = 0;
+
+            switch (carModel.toLowerCase()) {
+                case 'ford fiesta':
+                    descuento = 5;
+                    break;
+                case 'ford focus':
+                    descuento = 10;
+                    break;
+                case 'ford escape':
+                    descuento = 20;
+                    break;
+                default:
+                    descuento = 0;
+            }
+
+            const resultado = descuento > 0 
+                ? `Coche seleccionado: ${carModel.toUpperCase()}<br>Descuento aplicable: ${descuento}%`
+                : 'Seleccione un coche para calcular el descuento.';
+
+            document.getElementById('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+</html>

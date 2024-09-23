@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertir Temperatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #333;
+            font-size: 1rem;
+            width: 100%;
+            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: rgba(52, 152, 219, 0.8);
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(52, 152, 219, 0.6);
+        }
+
+        button:hover {
+            background-color: rgba(41, 128, 185, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Convertir Temperatura</h1>
+        <label for="celsius">Ingrese la temperatura en Celsius:</label>
+        <input type="number" id="celsius" placeholder="Ejemplo: 25">
+        <button onclick="mostrarResultado()">Convertir</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function mostrarResultado() {
+            const celsius = parseFloat(document.getElementById('celsius').value);
+            if (!isNaN(celsius)) {
+                const fahrenheit = (celsius * 9/5) + 32;
+                document.getElementById('resultado').innerHTML = `${celsius}°C es igual a ${fahrenheit.toFixed(2)}°F`;
+            } else {
+                document.getElementById('resultado').innerHTML = "Por favor, ingrese un valor válido.";
+            }
+        }
+    </script>
+
+</body>
+</html>
